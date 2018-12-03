@@ -1,5 +1,5 @@
 /*
-    THAIN¡ CAGLIONI                 MATRICULA 158286
+    THAIN√Å CAGLIONI                 MATRICULA 158286
     VITOR LANGARO BALOTIN           MATRICULA 163252
 */
 #include <iostream>
@@ -25,8 +25,8 @@ int menu()
          <<"2.Consultar: \n"
          <<"3.Excluir: \n"
          <<"4.Alterar: \n"
-         <<"5.Consultar por Funcao: \n"
-         <<"6.Salvar e sair: \n"
+         //<<"6.Consultar por Funcao: \n"
+         <<"5.Salvar e sair: \n"
          <<"Escolha uma opcao: ";
 
     int op;
@@ -58,7 +58,7 @@ void cadastrar(list<nmi>& jenga)
         for(auto it=jenga.begin(); it!=jenga.end(); it++){
             if(aux.CPF == it->CPF){
                 cout << "Funcionario ja esta cadastrado." << endl;
-                cout << "Nome:" << it->nome << endl;
+                cout << "Nome: " << it->nome << endl;
                      //<< "CPF: " << it->CPF << endl
                 cout << "****************************\n";
                 break;
@@ -82,11 +82,11 @@ void excluir(list<nmi>& jenga)
     for(auto it=jenga.begin(); it!=jenga.end(); it++){
         if(cpfex == it->CPF){
             char a;
-            cout << "Deseja mesmo terminar? Digite S para confirmar ou N para cancelar a operacao."<< endl;
+            cout << "Deseja mesmo remover? Digite S para confirmar ou N para cancelar a operacao."<< endl;
             cin >> a;
             if(a == 'S' || a == 's'){
                 jenga.erase(it);
-                cout << "Terminado com sucesso.\n";
+                cout << "Dados removidos com sucesso.\n";
                 cout << "****************************\n";
                 return;
             }
@@ -104,20 +104,26 @@ void excluir(list<nmi>& jenga)
 
 void consultar(const list<nmi>& jenga)
 {
-
+        string cpfcons;
+        cout << "Digite o CPF do funcionario: ";
+        cin >> cpfcons;
         if (jenga.empty()){
             cout << "Nao ha funcionarios cadastrados.\n";
             return;
         }
         for( auto it=jenga.begin(); it!=jenga.end(); it++){
-            cout << it->nome << endl
-                 << it->CPF << endl
-                 << it->datan << endl
-                 << it->datac << endl
-                 << it->func << endl
-                 << "**********************" << endl;
+            if(it->CPF == cpfcons){
+                cout << it->nome << endl
+                     << it->CPF << endl
+                     << it->datan << endl
+                     << it->datac << endl
+                     << it->func << endl
+                     << "**********************"<< endl;
+                     return;
+            }
         }
-
+        cout << "Nenhum funcionario com esse CPF foi encontrado.\n";
+        cout << "*******************************\n";
 }
 
 
@@ -206,11 +212,78 @@ void alterar(list<nmi>& jenga)
     cout << "Digite o CPF do funcionario a ser alterado: ";
     cin >> aux.CPF;
 
-    if(jenga.empty())
-        jenga.push_back(aux);
+    if(jenga.empty()){
+        cout << "Nao ha funcionarios cadastrados\n";
+        return;
+    }
     else{
         for(auto it=jenga.begin(); it!=jenga.end(); it++){
             if(aux.CPF == it->CPF){
+                cout << "Escolha um dos campos para alterar: \n"
+                     << "1.Nome\n"
+                     << "2.CPF\n"
+                     << "3.Data de nascimento\n"
+                     << "4.Data em que foi contratado\n"
+                     << "5.Funcao\n"
+                     << "6.Todas os campos\n"
+                     << "Digite o numero correspondente: ";
+                     int n;
+                     cin >> n;
+                     if(n==1){
+                        cout << "Digite o novo nome: ";
+                        cin >> it->nome;
+                        cout << "Atualizado com sucesso.\n";
+                        cout << it->nome << endl;
+                        cout << "********************************\n";
+                        return;
+                     }
+                     if(n==2){
+                        cout << "Digite o novo CPF: ";
+                        cin >> it->CPF;
+                        cout << "Atualizado com sucesso.\n";
+                        cout << it->CPF << endl;
+                        cout << "********************************\n";
+                        return;
+                     }
+                     if(n==3){
+                        cout << "Digite a nova data de nascimento: ";
+                        cin >> it->datan;
+                        cout << "Atualizado com sucesso.\n";
+                        cout << it->datan << endl;
+                        cout << "********************************\n";
+                        return;
+                     }
+                     if(n==4){
+                        cout << "Digite a nova data em que o funcionario foi contratado: ";
+                        cin >> it->datac;
+                        cout << "Atualizado com sucesso.\n";
+                        cout << it->datac << endl;
+                        cout << "********************************\n";
+                        return;
+                     }
+                     if(n==5){
+                        cout << "Digite a nova funcao: ";
+                        cin >> it->func;
+                        cout << "Atualizado com sucesso.\n";
+                        cout << it->func << endl;
+                        cout << "********************************\n";
+                        return;
+                     }
+                     if(n==6){
+                        cout << "Digite o novo nome: " ;
+                        cin >> it->nome;
+                        cout << "Digite o novo CPF: ";
+                        cin >> it->CPF;
+                        cout << "Digite a nova data de nascimento: ";
+                        cin >> it->datan;
+                        cout << "Digite a nova data em que o funcionario foi contratado: ";
+                        cin >> it->datac;
+                        cout << "Digite a nova funcao: ";
+                        cin >> it->func;
+                        cout << "Atualizado com sucesso.\n";
+                        cout << "********************************\n";
+                        return;
+                     }
                 cout << "Digite a nova funcao: /n";
                 cin >> it->func;
                 cout <<"*****************************" << endl;
@@ -222,7 +295,7 @@ void alterar(list<nmi>& jenga)
     cout << "******************" << endl;
 }
 
-void consultarfuncao(list<nmi> jenga)
+/*void consultarfuncao(list<nmi> jenga)
 {
     if(jenga.empty()){
         cout << "Nao ha funcionarios cadastrados.\n";
@@ -245,7 +318,7 @@ void consultarfuncao(list<nmi> jenga)
         }
     }
     cout << "*************************************\n";
-}
+}*/
 
 int main()
 {
@@ -273,13 +346,14 @@ int main()
             case 4:alterar(jenga);
             break;
         }
-        switch(op){
-            case 5:consultarfuncao(jenga);
+       /*switch(op){
+            case 6:consultarfuncao(jenga);
             break;
-        }
+        }*/
         switch(op){
-            case 6:a=salvar_e_sair(jenga, a);
+            case 5:a=salvar_e_sair(jenga, a);
             break;
         }
         }while(a==1);
 }
+
