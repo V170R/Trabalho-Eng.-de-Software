@@ -52,8 +52,11 @@ void cadastrar(list<nmi>& jenga)
     getline(cin, aux.func);
     cin.ignore();
 
-    if(jenga.empty())
+    if(jenga.empty()){
         jenga.push_back(aux);
+        cout << "*******************************\n";
+        return;
+    }
     else{
         for(auto it=jenga.begin(); it!=jenga.end(); it++){
             if(aux.CPF == it->CPF){
