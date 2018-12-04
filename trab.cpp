@@ -75,7 +75,7 @@ void cadastrar(list<nmi>& jenga)
 void excluir(list<nmi>& jenga)
 {
     string cpfex;
-    cout << "Digite o CPF do funcionario a ser removido: ";
+    cout << "Digite CPF do funcionario a ser removido: ";
     cin >> cpfex;
     if(jenga.empty()){
         cout << "Nao ha funcionarios cadastrados.\n";
