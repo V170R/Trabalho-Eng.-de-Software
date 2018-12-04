@@ -239,7 +239,6 @@ void alterar(list<nmi>& jenga)
                         getline(cin, nome);
                         it->nome=nome;
                         cout << "Atualizado com sucesso.\n";
-                        cout << it->nome << endl;
                         cout << "********************************\n";
                         return;
                      }
@@ -247,7 +246,6 @@ void alterar(list<nmi>& jenga)
                         cout << "Digite o novo CPF: ";
                         cin >> it->CPF;
                         cout << "Atualizado com sucesso.\n";
-                        cout << it->CPF << endl;
                         cout << "********************************\n";
                         return;
                      }
@@ -255,7 +253,6 @@ void alterar(list<nmi>& jenga)
                         cout << "Digite a nova data de nascimento: ";
                         cin >> it->datan;
                         cout << "Atualizado com sucesso.\n";
-                        cout << it->datan << endl;
                         cout << "********************************\n";
                         return;
                      }
@@ -263,7 +260,6 @@ void alterar(list<nmi>& jenga)
                         cout << "Digite a nova data em que o funcionario foi contratado: ";
                         cin >> it->datac;
                         cout << "Atualizado com sucesso.\n";
-                        cout << it->datac << endl;
                         cout << "********************************\n";
                         return;
                      }
@@ -271,13 +267,15 @@ void alterar(list<nmi>& jenga)
                         cout << "Digite a nova funcao: ";
                         cin >> it->func;
                         cout << "Atualizado com sucesso.\n";
-                        cout << it->func << endl;
                         cout << "********************************\n";
                         return;
                      }
                      if(n==6){
                         cout << "Digite o novo nome: " ;
-                        cin >> it->nome;
+                        string nome;
+                        cin.ignore();
+                        getline(cin, nome);
+                        it->nome=nome;
                         cout << "Digite o novo CPF: ";
                         cin >> it->CPF;
                         cout << "Digite a nova data de nascimento: ";
